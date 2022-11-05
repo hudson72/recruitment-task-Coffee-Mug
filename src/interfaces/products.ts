@@ -1,11 +1,10 @@
-export class Product {
+export interface Product {
     name: string;
     price: number;
 }
 
-export interface AllProducts {
-    allProducts: Product[];
-    total: number;
+export interface AllProductsResponse {
+    allProducts: [Product[], number];
 }
 
 export type CreateProductDtoResponse = Product | {
