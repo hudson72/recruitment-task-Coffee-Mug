@@ -7,3 +7,8 @@ export interface AllProducts {
     allProducts: Product[];
     total: number;
 }
+
+export type CreateProductDtoResponse = Product | {
+    isSuccessful: false;
+    message: string;
+}
