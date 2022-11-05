@@ -1,17 +1,20 @@
 import {BaseEntity, Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Product} from "../../interfaces/products";
 
 @Entity()
-export class Product extends BaseEntity {
+export class Products extends BaseEntity implements Product {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column({
+        nullable: false,
         type: "varchar",
         length: 100,
     })
     name: string;
 
     @Column({
+        nullable: false,
         type: "numeric",
         precision: 10,
         scale: 2,
