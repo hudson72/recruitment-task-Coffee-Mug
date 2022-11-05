@@ -51,7 +51,7 @@ $ nest start --watch
 You will then be able to access it at localhost:3000. In order to create and save a new product you'll need MySQL database installed on your PC.
 
 ## Usage
-As this is just a back-end part of the project, you can only test the app's end-points using one of the API clients like Insomnia or Postman. Please follow the steps in this document: [API info docs](./src/media/docs/Api info docs.pdf) to get started (I'm using Insomnia in my presentation).
+As this is just a back-end part of the project, you can only test the app's end-points using one of the API clients like Insomnia or Postman. Please follow the steps in this document: [API info docs](./src/media/docs/Api_info_docs.pdf) to get started (I'm using Insomnia in my presentation).
 
 ## Project Status
 Completed
