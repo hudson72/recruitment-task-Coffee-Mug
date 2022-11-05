@@ -1,7 +1,13 @@
 import {HttpException, Inject, Injectable} from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import {AllProductsResponse, CreateProductDtoResponse} from "../interfaces/products";
+import {
+  AllProductsResponse,
+  CreateProductDtoResponse,
+  Product,
+  RemoveProductResponse,
+  UpdateProductDtoResponse
+} from "../interfaces/products";
 import {Products} from "./entities/products.entity";
 import {DataSource} from "typeorm";
 
@@ -37,15 +43,34 @@ export class ProductsService {
     };
   };
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
-  }
+  async findOne(id: string): Promise<Product> {
+    if (!await Products.findOne({where: {id}})) {
+      throw new HttpException(`Product with ID: '${id}' doesn't exist!`, 404);
+    }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
-  }
+    return await Products.findOne({where: {id}})
+  };
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async update(id: string, updateProductDto: UpdateProductDto): Promise<UpdateProductDtoResponse> {
+    const productToUpdate = await Products.findOne({where: {id}});
+    if (!productToUpdate) throw new HttpException(`Sorry, product with ID: '${id}' doesn't exist!`, 404);
+
+    await Products.update(id, updateProductDto);
+    return {
+      isSuccessful: true,
+      message: `Product with ID: '${id}' has been updated`,
+    };
+  };
+
+  async remove(id: string): Promise<RemoveProductResponse> {
+    if (!await Products.findOne({where: {id}})) {
+      throw new HttpException(`Product with ID: '${id}' doesn't exist!`, 404);
+    }
+
+    await Products.delete(id);
+    return {
+      isSuccessful: true,
+      message: `Product with ID: '${id}' has been deleted.`,
+    }
   }
 }

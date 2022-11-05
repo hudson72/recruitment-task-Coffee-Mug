@@ -7,7 +7,14 @@ export interface AllProductsResponse {
     allProducts: [Product[], number];
 }
 
-export type CreateProductDtoResponse = Product | {
-    isSuccessful: false;
+export type CreateProductDtoResponse = Product;
+
+export interface UpdateProductDtoResponse {
+    isSuccessful: boolean;
+    message: string;
+}
+
+export interface RemoveProductResponse {
+    isSuccessful: boolean;
     message: string;
 }

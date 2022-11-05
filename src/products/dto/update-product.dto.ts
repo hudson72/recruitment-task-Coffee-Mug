@@ -1,10 +1,12 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateProductDto } from './create-product.dto';
-import {IsDecimal} from "class-validator";
+import {IsAlpha, IsNumber, IsString} from "class-validator";
+
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {
+    @IsString()
     name: string;
 
-    @IsDecimal()
+    @IsNumber()
     price: number;
 }
