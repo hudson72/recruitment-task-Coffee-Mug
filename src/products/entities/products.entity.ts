@@ -11,7 +11,6 @@ export class Products extends BaseEntity implements Product {
         type: "varchar",
         length: 100,
     })
-
     name: string;
 
     @Column({
@@ -20,7 +19,6 @@ export class Products extends BaseEntity implements Product {
         precision: 10,
         scale: 2,
     })
-
     price: number;
 
     @UpdateDateColumn({
