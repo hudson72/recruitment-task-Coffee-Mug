@@ -42,13 +42,13 @@ From your command line:
 # Clone this repository
 $ git clone https://github.com/hudson72/recruitment-task-Coffee-Mug
 # Go to project directory
-$ cd products-api
+$ cd recruitment-task-Coffee-Mug
 # Install dependencies
 $ npm install
 # Run the app
 $ nest start --watch
 ```
-You will then be able to access it at localhost:3000. In order to create and save a new product you'll need MySQL database installed on your PC.
+You will then be able to access it at localhost:3000. In order to create and save a new product you'll need MySQL database installed on your PC. I'm using XAMPP Control Panel with HeidiSQL database in this project. Please have a look at the database configuration here: [Database config](./src/app.module.ts)  
 
 ## Usage
 As this is just a back-end part of the project, you can only test the app's end-points using one of the API clients like Insomnia or Postman. Please follow the steps in this document: [API info docs](./src/media/docs/API_info_docs.pdf) to get started (I'm using Insomnia in my presentation).
