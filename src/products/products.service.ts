@@ -57,6 +57,10 @@ export class ProductsService {
 
     if (!updateProductDto.name && !updateProductDto.price) throw new HttpException(`Sorry, no data provided for update! Please provide a new 'name' or a new 'price'`, 400);
 
+    if (updateProductDto.name === productToUpdate.name)  throw new HttpException(`Sorry, the given name and the existing one are the same: '${productToUpdate.name}'! Please provide a new 'name'`, 400);
+
+    if (updateProductDto.price == productToUpdate.price)  throw new HttpException(`Sorry, the given price and the existing one are the same: '${productToUpdate.price}'! Please provide a new 'price'`, 400);
+
     await Products.update(id, updateProductDto);
     return {
       isSuccessful: true,
