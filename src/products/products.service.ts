@@ -55,6 +55,8 @@ export class ProductsService {
     const productToUpdate = await Products.findOne({where: {id}});
     if (!productToUpdate) throw new HttpException(`Sorry, product with ID: '${id}' doesn't exist!`, 404);
 
+    if (!updateProductDto.name && !updateProductDto.price) throw new HttpException(`Sorry, no data provided for update! Please provide a new 'name' or a new 'price'`, 400);
+
     await Products.update(id, updateProductDto);
     return {
       isSuccessful: true,
